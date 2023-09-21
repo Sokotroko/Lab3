@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Casa de Cambio</title>
+  <script>
+    function cotizarMoneda() {
+      var monedaSeleccionada = document.querySelector('input[name="moneda"]:checked');
+      var monto = parseFloat(document.getElementById("monto").value);
+
+      if (monedaSeleccionada && !isNaN(monto)) {
+        var moneda = monedaSeleccionada.value;
+        var tasaCambio;
+
+        if (moneda === "dolar") {
+          tasaCambio = 3.47;
+        } else if (moneda === "euro") {
+          tasaCambio = 3.98;
+        }
+
+        var resultado = monto * tasaCambio;
+        alert("Cantidad en " + moneda.toUpperCase() + ": " + resultado.toFixed(2));
+      } else {
+        alert("Por favor, seleccione una moneda y ingrese un monto válido.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>CASA DE CAMBIO</h1>
+  <p>Seleccionar moneda a enviar:</p>
+  <form>
+    <input type="radio" name="moneda" value="dolar" id="dolar" />
+    <label for="dolar">Dólar</label>
+    
+    <input type="radio" name="moneda" value="euro" id="euro" />
+    <label for="euro">Euro</label>
+    
+    <br>
+    <p>Ingrese monto:</p>
+    <input type="text" id="monto" />
+    <br>
+    <button type="button" onclick="cotizarMoneda()">Cotizar</button>
+  </form>
+</body>
+</html>
+
